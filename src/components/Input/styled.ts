@@ -3,34 +3,27 @@ import {
     PaddingTypes,
     RadiusTypes,
     SpacingTypes,
-    VariantTypes,
+    theme,
 } from "../../styles/theme";
 import {
-    variantStyles,
-    colorTextByVariant,
     borderRadiusStyle,
-    spacingStyle,
     makePadding,
+    spacingStyle,
 } from "../../styles/variants";
 
-interface StyledButtonProps {
-    variant: VariantTypes;
+interface StyledInputProps {
     rounded?: RadiusTypes;
     spacing?: SpacingTypes | PaddingTypes;
 }
 
-export const StyledButton = styled.button<StyledButtonProps>`
-    background-color: ${({ variant }) => variantStyles(variant)};
-    color: ${({ variant }) => colorTextByVariant(variant)};
+export const StyledInput = styled.input<StyledInputProps>`
     border: none;
+    background-color: ${theme.colors?.accent};
     border-radius: ${({ rounded }) => borderRadiusStyle(rounded)};
-    cursor: pointer;
-
-    font-weight: 800;
-    font-size: 16px;
-
+    box-shadow: rgba(46, 45, 55, 0.12) 0px 1px 2px;
     ${({ spacing }) =>
         typeof spacing === "object"
             ? makePadding(spacing)
-            : `padding: ${spacingStyle(spacing)};`}
+            : `padding: ${spacingStyle(spacing)};`};
+    outline: none;
 `;

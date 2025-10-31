@@ -8,6 +8,7 @@ export const theme = {
         info: "",
         light: "",
         dark: "",
+        accent: "#ECEDF2",
     },
     breakpoints: {
         xs: "475px",
