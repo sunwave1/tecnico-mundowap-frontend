@@ -31,5 +31,20 @@ export const theme = {
         md: "12px",
         lg: "16px",
         xl: "20px",
+        full: "99rem",
     },
 };
+
+export interface PaddingTypes {
+    p?: string;
+    px?: string;
+    py?: string;
+    pt?: string;
+    pr?: string;
+    pl?: string;
+    pb?: string;
+}
+
+export type RadiusTypes = keyof (typeof theme)["border-radius"];
+export type SpacingTypes = keyof typeof theme.spacing;
+export type VariantTypes = keyof typeof theme.colors;
