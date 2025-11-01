@@ -21,6 +21,7 @@ export const StyledInput = styled.input<StyledInputProps>`
     background-color: ${theme.colors?.accent};
     border-radius: ${({ rounded }) => borderRadiusStyle(rounded)};
     box-shadow: rgba(46, 45, 55, 0.12) 0px 1px 2px;
+    min-height: 24px;
     ${({ spacing }) =>
         typeof spacing === "object"
             ? makePadding(spacing)

@@ -10,7 +10,6 @@ import {
     WrapperStyle,
 } from "./styled";
 import { modalVariant, overlayVariant } from "./animation";
-import { RadiusTypes } from "../../styles/theme";
 
 interface RootProps {
     isOpen: boolean;
