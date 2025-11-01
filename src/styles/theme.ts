@@ -60,7 +60,13 @@ export type RadiusTypes = keyof (typeof theme)["border-radius"];
 export type SpacingTypes = keyof typeof theme.spacing;
 export type VariantTypes = keyof typeof theme.colors;
 export type AlignmentTypes = "start" | "center" | "end";
-export type JustifyTypes = "start" | "center" | "end";
+export type JustifyTypes =
+    | "start"
+    | "center"
+    | "end"
+    | "between"
+    | "around"
+    | "evenly";
 export type FlexWrapTypes = "nowrap" | "wrap" | "wrap-reverse";
 export type LargeTypes = "small" | "medium" | "large";
 export type WeightTypes = "light" | "regular" | "medium" | "bold" | string;

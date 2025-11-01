@@ -4,6 +4,8 @@ import {
     AlignmentTypes,
     FlexWrapTypes,
     JustifyTypes,
+    PaddingTypes,
+    SpacingTypes,
 } from "../../styles/theme";
 
 interface RowProps extends HTMLAttributes<HTMLDivElement> {
@@ -14,6 +16,7 @@ interface RowProps extends HTMLAttributes<HTMLDivElement> {
     basis?: string;
     wrap?: FlexWrapTypes;
     gap?: string;
+    spacing?: SpacingTypes | PaddingTypes;
 }
 
 export default function Row({
@@ -24,6 +27,7 @@ export default function Row({
     basis,
     wrap,
     gap,
+    spacing,
     ...props
 }: RowProps) {
     return (
@@ -35,6 +39,7 @@ export default function Row({
             basis={basis}
             wrap={wrap}
             gap={gap}
+            spacing={spacing}
             {...props}
         >
             {props.children}

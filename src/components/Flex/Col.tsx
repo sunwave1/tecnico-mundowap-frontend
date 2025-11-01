@@ -5,6 +5,7 @@ import {
     FlexWrapTypes,
     JustifyTypes,
     MarginTypes,
+    PaddingTypes,
     SpacingTypes,
 } from "../../styles/theme";
 
@@ -17,6 +18,7 @@ interface ColProps extends HTMLAttributes<HTMLDivElement> {
     wrap?: FlexWrapTypes;
     gap?: string;
     margin?: SpacingTypes | MarginTypes;
+    spacing?: SpacingTypes | PaddingTypes;
 }
 
 export default function Col({
@@ -28,6 +30,7 @@ export default function Col({
     wrap,
     gap,
     margin,
+    spacing,
     ...props
 }: ColProps) {
     return (
@@ -40,6 +43,7 @@ export default function Col({
             wrap={wrap}
             gap={gap}
             margin={margin}
+            spacing={spacing}
             {...props}
         >
             {props.children}

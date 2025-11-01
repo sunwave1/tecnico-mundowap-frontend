@@ -125,6 +125,18 @@ export const makeJustify = (justify?: JustifyTypes) => {
             return css`
                 justify-content: flex-end;
             `;
+        case "between":
+            return css`
+                justify-content: space-between;
+            `;
+        case "around":
+            return css`
+                justify-content: space-around;
+            `;
+        case "evenly":
+            return css`
+                justify-content: space-evenly;
+            `;
         default:
             return css``;
     }

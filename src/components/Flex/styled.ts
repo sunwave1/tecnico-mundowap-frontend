@@ -4,6 +4,7 @@ import {
     makeJustify,
     makeMargin,
     spacingStyle,
+    makePadding,
 } from "../../styles/variants";
 import {
     AlignmentTypes,
@@ -11,6 +12,7 @@ import {
     FlexWrapTypes,
     MarginTypes,
     SpacingTypes,
+    PaddingTypes,
 } from "../../styles/theme";
 
 interface FlexProps {
@@ -22,6 +24,7 @@ interface FlexProps {
     wrap?: FlexWrapTypes;
     gap?: string;
     margin?: SpacingTypes | MarginTypes;
+    spacing?: SpacingTypes | PaddingTypes;
 }
 
 export const RowStyle = styled.div<FlexProps>`
@@ -38,7 +41,10 @@ export const RowStyle = styled.div<FlexProps>`
         typeof margin === "object"
             ? makeMargin(margin)
             : `margin: ${spacingStyle(margin)};`}
-
+    ${({ spacing }) =>
+        typeof spacing === "object"
+            ? makePadding(spacing)
+            : `padding: ${spacingStyle(spacing)};`}
     ${({ align }) => makeAlign(align)}
     ${({ justify }) => makeJustify(justify)}
 `;
@@ -52,6 +58,11 @@ export const ColumnStyle = styled.div<FlexProps>`
     flex-basis: ${({ basis }) => basis || "auto"};
     flex-wrap: ${({ wrap }) => wrap || "nowrap"};
     gap: ${({ gap }) => gap || "0"};
+
+    ${({ spacing }) =>
+        typeof spacing === "object"
+            ? makePadding(spacing)
+            : `padding: ${spacingStyle(spacing)};`}
 
     ${({ margin }) =>
         typeof margin === "object"
