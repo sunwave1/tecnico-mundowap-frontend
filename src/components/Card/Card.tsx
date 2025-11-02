@@ -28,12 +28,12 @@ export default function Card({
 }: CardProps) {
     return (
         <CardStyle
-            variant={variant}
-            hasShadow={hasShadow}
-            hasBorder={hasBorder}
-            margin={margin}
-            spacing={spacing}
-            rounded={rounded}
+            $variant={variant}
+            $hasShadow={hasShadow}
+            $hasBorder={hasBorder}
+            $margin={margin}
+            $spacing={spacing}
+            $rounded={rounded}
             {...props}
         >
             {children}
