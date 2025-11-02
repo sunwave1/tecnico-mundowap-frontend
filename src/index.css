@@ -12,3 +12,7 @@ select,
 button {
     font-family: "Poppins", sans-serif;
 }
+
+input[disabled] {
+    cursor: not-allowed;
+}
