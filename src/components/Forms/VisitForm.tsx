@@ -23,9 +23,14 @@ interface VisitFormProps {
 
 export const VisitForm = forwardRef<VisitFormRef, VisitFormProps>(
     ({ onValidSubmit }, ref) => {
-        const { findLocation, data, clearData, isLoading } = useCep();
-        const [forceBlock, setForceBlock] = useState<boolean>(false);
-
+        const { findLocation, data, clearData, ok, isLoading } = useCep();
+        const [forceBlock, setForceBlock] = useState<{
+            street: boolean;
+            sublocality: boolean;
+        }>({
+            street: false,
+            sublocality: false,
+        });
         const {
             register,
             handleSubmit,
@@ -93,7 +98,11 @@ export const VisitForm = forwardRef<VisitFormRef, VisitFormProps>(
             setValue("sublocality", data.bairro);
             setValue("street", data.logradouro);
             clearErrors(["uf", "city", "sublocality", "street"]);
-            setForceBlock(data.bairro !== "" || data.logradouro !== "");
+            setForceBlock((prev) => ({
+                ...prev,
+                street: data.logradouro !== "",
+                sublocality: data.bairro !== "",
+            }));
         }, [data, setValue, reset, clearErrors]);
 
         return (
@@ -221,7 +230,9 @@ export const VisitForm = forwardRef<VisitFormRef, VisitFormProps>(
                             placeholder="Bairro"
                             $rounded="md"
                             id="bairro"
-                            disabled={!ok || isLoading || forceBlock}
+                            disabled={
+                                !ok || isLoading || forceBlock.sublocality
+                            }
                         />
                         {errors.sublocality && (
                             <Error>{errors.sublocality.message}</Error>
@@ -240,7 +251,7 @@ export const VisitForm = forwardRef<VisitFormRef, VisitFormProps>(
                             placeholder="Logradouro"
                             $rounded="md"
                             id="logradouro"
-                            disabled={!ok || isLoading || forceBlock}
+                            disabled={!ok || isLoading || forceBlock.street}
                         />
                         {errors.street && (
                             <Error>{errors.street.message}</Error>
