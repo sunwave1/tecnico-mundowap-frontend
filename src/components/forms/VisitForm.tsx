@@ -34,6 +34,7 @@ export const VisitForm = forwardRef<VisitFormRef, VisitFormProps>(
             reset,
             watch,
             getValues,
+            clearErrors,
         } = useForm<VisitFormData>({
             resolver: zodResolver(visitSchema),
             defaultValues: {
@@ -91,8 +92,9 @@ export const VisitForm = forwardRef<VisitFormRef, VisitFormProps>(
             setValue("city", data.localidade);
             setValue("sublocality", data.bairro);
             setValue("street", data.logradouro);
+            clearErrors(["uf", "city", "sublocality", "street"]);
             setForceBlock(data.bairro !== "" || data.logradouro !== "");
-        }, [data, setValue, reset]);
+        }, [data, setValue, reset, clearErrors]);
 
         return (
             <Form onSubmit={handleSubmit(onSubmit)}>
