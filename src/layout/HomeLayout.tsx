@@ -1,4 +1,5 @@
 import Header from "../components/Header/Header";
+import { Main } from "../components/Main/styled";
 
 interface HomeLayoutProps {
     children: React.ReactNode;
@@ -8,7 +9,7 @@ export default function HomeLayout({ children }: HomeLayoutProps) {
     return (
         <>
             <Header />
-            <main>{children}</main>
+            <Main $margin={"md"}>{children}</Main>
         </>
     );
 }
