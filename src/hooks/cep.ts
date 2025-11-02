@@ -7,7 +7,6 @@ export const useCep = () => {
         data: null,
         isLoading: false,
         error: null,
-        ok: false,
     });
 
     const setProperty = (
@@ -29,13 +28,11 @@ export const useCep = () => {
             }
 
             setProperty("data", response.data);
-            setProperty("ok", true);
         } catch (error) {
             setProperty(
                 "error",
                 error instanceof Error ? error.message : "Erro ao buscar CEP",
             );
-            setProperty("ok", false);
         } finally {
             setProperty("isLoading", false);
         }

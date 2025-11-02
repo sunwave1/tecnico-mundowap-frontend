@@ -19,7 +19,6 @@ export interface CepRequest {
     data: ViaCep | null;
     isLoading: boolean;
     error: string | null;
-    ok: boolean;
 }
 
 export interface Addresses {
