@@ -23,7 +23,7 @@ interface VisitFormProps {
 
 export const VisitForm = forwardRef<VisitFormRef, VisitFormProps>(
     ({ onValidSubmit }, ref) => {
-        const { findLocation, data, clearData, ok, isLoading } = useCep();
+        const { findLocation, data, clearData, isLoading } = useCep();
         const [forceBlock, setForceBlock] = useState<boolean>(false);
 
         const {
