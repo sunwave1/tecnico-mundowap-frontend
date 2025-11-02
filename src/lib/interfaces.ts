@@ -20,3 +20,21 @@ export interface CepRequest {
     isLoading: boolean;
     error: string | null;
 }
+
+export interface Addresses {
+    cep: string;
+    city: string;
+    uf: string;
+    sublocality: string;
+    street: string;
+    street_number: string;
+}
+
+export interface Visit {
+    date: string;
+    completed: 1 | 0;
+    forms: number;
+    products: number;
+    duration: number;
+    address: Addresses;
+}
