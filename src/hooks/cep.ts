@@ -7,6 +7,7 @@ export const useCep = () => {
         data: null,
         isLoading: false,
         error: null,
+        ok: false,
     });
 
     const setProperty = (
@@ -19,7 +20,7 @@ export const useCep = () => {
     const findLocation = useCallback(async (postalCode: string) => {
         setProperty("isLoading", true);
         try {
-            const response = await fetchClient<ViaCep | CepRequestError>(
+            const response = await fetchClient<ViaCep>(
                 `https://viacep.com.br/ws/${postalCode}/json/`,
             );
 
@@ -28,18 +29,20 @@ export const useCep = () => {
             }
 
             setProperty("data", response.data);
+            setProperty("ok", true);
         } catch (error) {
             setProperty(
                 "error",
                 error instanceof Error ? error.message : "Erro ao buscar CEP",
             );
+            setProperty("ok", false);
         } finally {
             setProperty("isLoading", false);
         }
     }, []);
 
     const clearData = useCallback(() => {
-        setData((prev) => ({ ...prev, data: null, error: null }));
+        setData((prev) => ({ ...prev, data: null, error: null, ok: false }));
     }, []);
 
     return {
