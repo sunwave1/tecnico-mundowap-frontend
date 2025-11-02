@@ -1,3 +1,4 @@
+import { CardStyle } from "./styled";
 import {
     MarginTypes,
     PaddingTypes,
@@ -5,7 +6,6 @@ import {
     SpacingTypes,
     VariantTypes,
 } from "../../styles/theme";
-import { CardStyle } from "./styled";
 
 interface CardProps extends React.AllHTMLAttributes<HTMLDivElement> {
     variant?: VariantTypes;

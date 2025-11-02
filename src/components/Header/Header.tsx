@@ -6,7 +6,7 @@ export default function Header() {
     return (
         <HeaderStyle>
             <Row justify="between" spacing={"lg"}>
-                <div></div>
+                <div />
                 <div>
                     <Button
                         variant="secondary"

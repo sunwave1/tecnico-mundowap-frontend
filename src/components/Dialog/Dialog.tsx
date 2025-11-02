@@ -1,6 +1,8 @@
-import { XMarkIcon } from "@heroicons/react/16/solid";
 import React from "react";
+import Teleport from "../Teleport";
+import { XMarkIcon } from "@heroicons/react/16/solid";
 import { motion, AnimatePresence } from "framer-motion";
+import { modalVariant, overlayVariant } from "./animation";
 import {
     ContainerProps,
     ContainerStyle,
@@ -9,7 +11,6 @@ import {
     TitleStyle,
     WrapperStyle,
 } from "./styled";
-import { modalVariant, overlayVariant } from "./animation";
 
 interface RootProps {
     isOpen: boolean;
@@ -24,9 +25,11 @@ const Root: React.FC<React.PropsWithChildren<RootProps>> = ({
     children,
 }) => {
     return (
-        <AnimatePresence>
-            {isOpen && <WrapperStyle>{children}</WrapperStyle>}
-        </AnimatePresence>
+        <Teleport target={document.body}>
+            <AnimatePresence>
+                {isOpen && <WrapperStyle>{children}</WrapperStyle>}
+            </AnimatePresence>
+        </Teleport>
     );
 };
 

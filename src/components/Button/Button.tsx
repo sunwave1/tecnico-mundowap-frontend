@@ -9,7 +9,7 @@ import {
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     children: React.ReactNode;
-    variant: VariantTypes;
+    variant?: VariantTypes;
     disabled?: boolean;
     rounded?: RadiusTypes;
     spacing?: SpacingTypes | PaddingTypes;
