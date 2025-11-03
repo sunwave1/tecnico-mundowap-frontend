@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { Visit } from "../lib/interfaces";
+import { VisitFormData } from "../lib/zod.schema";
 import Button from "./Button/Button";
 import { Modal } from "./Dialog/Dialog";
 import Row from "./Flex/Row";
@@ -8,10 +9,14 @@ import { VisitForm, VisitFormRef } from "./Forms/VisitForm";
 interface VisitModalProps {
     title: string;
     isOpen: boolean;
-    visit?: Visit;
+    visit?: Visit | null;
     onClose: () => void;
-    onCreate?: () => void;
-    onUpdate?: () => void;
+    onCreate?: (data: VisitFormData, resetForm: () => void) => void;
+    onUpdate?: (
+        data: VisitFormData,
+        visit: Visit,
+        resetForm: () => void,
+    ) => void;
 }
 
 export default function VisitModal({
@@ -36,7 +41,23 @@ export default function VisitModal({
                     <Modal.Closer onClick={onClose} />
                 </Modal.Header>
 
-                <VisitForm ref={formRef} />
+                <VisitForm
+                    ref={formRef}
+                    visit={visit}
+                    onCreateSubmit={(data: VisitFormData) => {
+                        onCreate?.(
+                            data,
+                            formRef.current?.resetForm ?? (() => {}),
+                        );
+                    }}
+                    onUpdateSubmit={(data: VisitFormData, visit: Visit) => {
+                        onUpdate?.(
+                            data,
+                            visit,
+                            formRef.current?.resetForm ?? (() => {}),
+                        );
+                    }}
+                />
 
                 <Row justify="end" gap="6px" margin={{ mt: "8px" }}>
                     <Button
@@ -53,7 +74,7 @@ export default function VisitModal({
                         rounded="lg"
                         onClick={() => formRef.current?.submit()}
                     >
-                        CRIAR VISITA
+                        {visit ? "SALVAR ALTERAÇÕES" : "CRIAR VISITA"}
                     </Button>
                 </Row>
             </Modal.Container>
