@@ -32,6 +32,7 @@ export interface Addresses {
 }
 
 export interface Visit {
+    id?: string;
     date: string;
     completed: 1 | 0;
     forms: number;
