@@ -3,9 +3,9 @@ import { useVisit } from "./store/visit";
 import { useMemo, useState } from "react";
 import { Visit } from "./lib/interfaces";
 import VisitModal from "./components/VisitModal";
-import HomeLayout from "./layout/HomeLayout";
-import Col from "./components/Flex/Col";
-import Row from "./components/Flex/Row";
+import HomeLayout from "./components/layout/HomeLayout";
+import Col from "./components/ui/Flex/Col";
+import Row from "./components/ui/Flex/Row";
 import "./App.css";
 
 function App() {

@@ -2,7 +2,7 @@ import { AnimatePresence } from "framer-motion";
 import { useCallback } from "react";
 import { Helper } from "../lib/helper";
 import type { Visit } from "../lib/interfaces";
-import Col from "./Flex/Col";
+import Col from "./ui/Flex/Col";
 import { Visit as VisitComponent } from "./Visit/Visit";
 import { Workday } from "./Workday/Workday";
 

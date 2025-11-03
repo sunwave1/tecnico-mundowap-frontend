@@ -1,5 +1,5 @@
 import { PropsWithChildren } from "react";
-import Card from "../Card/Card";
+import Card from "../ui/Card/Card";
 import Wrapper from "./Wrapper";
 import Header from "./Header";
 import Progress from "./Progress";

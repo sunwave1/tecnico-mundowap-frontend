@@ -1,9 +1,9 @@
 import { CalendarIcon } from "@heroicons/react/24/outline";
-import { Text } from "../Text/Text";
+import { Text } from "../ui/Text/Text";
 import { theme } from "../../styles/theme";
-import Col from "../Flex/Col";
-import Row from "../Flex/Row";
-import Button from "../Button/Button";
+import Col from "../ui/Flex/Col";
+import Row from "../ui/Flex/Row";
+import Button from "../ui/Button/Button";
 
 interface HeaderProps {
     date: string;

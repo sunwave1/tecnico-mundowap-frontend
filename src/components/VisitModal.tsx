@@ -1,9 +1,9 @@
 import { useRef } from "react";
 import { Visit } from "../lib/interfaces";
 import { VisitFormData } from "../lib/zod.schema";
-import Button from "./Button/Button";
-import { Modal } from "./Dialog/Dialog";
-import Row from "./Flex/Row";
+import Button from "./ui/Button/Button";
+import { Modal } from "./ui/Dialog/Dialog";
+import Row from "./ui/Flex/Row";
 import { VisitForm, VisitFormRef } from "./Forms/VisitForm";
 
 interface VisitModalProps {

@@ -1,15 +1,15 @@
-import Col from "../Flex/Col";
-import Row from "../Flex/Row";
-import Input from "../Input/Input";
-import Label from "../Label/Label";
-import { Error } from "../Error/styled";
-import { Form } from "../Form/styled";
-import { useCep } from "../../hooks/cep";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { VisitFormData, visitSchema } from "../../lib/zod.schema";
 import { forwardRef, useEffect, useImperativeHandle, useState } from "react";
+import { VisitFormData, visitSchema } from "../../lib/zod.schema";
 import { Visit } from "../../lib/interfaces";
+import { useCep } from "../../hooks/cep";
+import { Form } from "../ui/Form/styled";
+import { Error } from "../ui/Error/styled";
+import Col from "../ui/Flex/Col";
+import Label from "../ui/Label/Label";
+import Row from "../ui/Flex/Row";
+import Input from "../ui/Input/Input";
 
 export interface VisitFormRef {
     submit: () => void;

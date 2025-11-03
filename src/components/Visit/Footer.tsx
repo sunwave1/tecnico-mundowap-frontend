@@ -1,6 +1,6 @@
 import { Addresses } from "../../lib/interfaces";
-import Col from "../Flex/Col";
-import { Text } from "../Text/Text";
+import { Text } from "../ui/Text/Text";
+import Col from "../ui/Flex/Col";
 
 interface FooterProps {
     address: Addresses;

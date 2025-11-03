@@ -1,7 +1,7 @@
-import { Text } from "../Text/Text";
-import Col from "../Flex/Col";
-import Row from "../Flex/Row";
-import Progressbar from "../Progressbar/Progressbar";
+import { Text } from "../ui/Text/Text";
+import Col from "../ui/Flex/Col";
+import Row from "../ui/Flex/Row";
+import Progressbar from "../ui/Progressbar/Progressbar";
 
 interface ProgressProps {
     title: string;

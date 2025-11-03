@@ -1,6 +1,6 @@
 import { PropsWithChildren } from "react";
 import { motion } from "framer-motion";
-import Card, { CardProps } from "../Card/Card";
+import Card, { CardProps } from "../ui/Card/Card";
 import Wrapper from "./Wrapper";
 import Footer from "./Footer";
 import Header from "./Header";

@@ -1,6 +1,6 @@
-import Row from "../Flex/Row";
-import Badge from "../Badge/Badge";
-import { Text } from "../Text/Text";
+import Row from "../ui/Flex/Row";
+import Badge from "../ui/Badge/Badge";
+import { Text } from "../ui/Text/Text";
 import { theme } from "../../styles/theme";
 import { Visit } from "../../lib/interfaces";
 import { Helper } from "../../lib/helper";
