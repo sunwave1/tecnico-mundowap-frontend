@@ -25,9 +25,9 @@ export default function Button({
 }: ButtonProps) {
     return (
         <StyledButton
-            variant={variant}
-            rounded={rounded}
-            spacing={spacing}
+            $variant={variant}
+            $rounded={rounded}
+            $spacing={spacing}
             disabled={disabled}
             {...props}
         >

@@ -35,15 +35,15 @@ export default function Row({
 }: RowProps) {
     return (
         <RowStyle
-            align={align}
-            justify={justify}
-            grow={grow}
-            shrink={shrink}
-            basis={basis}
-            wrap={wrap}
-            gap={gap}
-            spacing={spacing}
-            margin={margin}
+            $align={align}
+            $justify={justify}
+            $grow={grow}
+            $shrink={shrink}
+            $basis={basis}
+            $wrap={wrap}
+            $gap={gap}
+            $spacing={spacing}
+            $margin={margin}
             {...props}
         >
             {props.children}

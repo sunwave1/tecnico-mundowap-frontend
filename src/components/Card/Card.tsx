@@ -7,7 +7,7 @@ import {
     VariantTypes,
 } from "../../styles/theme";
 
-interface CardProps extends React.AllHTMLAttributes<HTMLDivElement> {
+export interface CardProps extends React.AllHTMLAttributes<HTMLDivElement> {
     variant?: VariantTypes;
     hasShadow?: boolean;
     hasBorder?: boolean;

@@ -9,6 +9,7 @@ export const theme = {
         light: "",
         dark: "",
         accent: "#ECEDF2",
+        muted: "#7B7B7B",
     },
     breakpoints: {
         xs: "475px",
@@ -69,7 +70,13 @@ export type JustifyTypes =
     | "evenly";
 export type FlexWrapTypes = "nowrap" | "wrap" | "wrap-reverse";
 export type LargeTypes = "small" | "medium" | "large";
-export type WeightTypes = "light" | "regular" | "medium" | "bold" | string;
+export type WeightTypes =
+    | "light"
+    | "regular"
+    | "medium"
+    | "semibold"
+    | "bold"
+    | string;
 export type FontSizeTypes =
     | "xs"
     | "sm"

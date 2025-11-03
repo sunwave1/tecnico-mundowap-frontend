@@ -35,15 +35,15 @@ export default function Col({
 }: ColProps) {
     return (
         <ColumnStyle
-            align={align}
-            justify={justify}
-            grow={grow}
-            shrink={shrink}
-            basis={basis}
-            wrap={wrap}
-            gap={gap}
-            margin={margin}
-            spacing={spacing}
+            $align={align}
+            $justify={justify}
+            $grow={grow}
+            $shrink={shrink}
+            $basis={basis}
+            $wrap={wrap}
+            $gap={gap}
+            $margin={margin}
+            $spacing={spacing}
             {...props}
         >
             {props.children}
