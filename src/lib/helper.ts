@@ -8,12 +8,19 @@ const PRODMINUTE_VALUE = 5;
 
 const formatDate = (
     date: string | Date,
+    capitalizeFirstLetter = false,
     fmt: FormatTypes = "EEEEEE. dd/MM/yyyy",
 ) => {
     const dateParsed = typeof date === "string" ? parseISO(date) : date;
-    return isValid(dateParsed)
+    let result = isValid(dateParsed)
         ? format(dateParsed, fmt, { locale: ptBR })
         : "Invalid Date";
+
+    if (capitalizeFirstLetter) {
+        result = result.charAt(0).toUpperCase() + result.slice(1);
+    }
+
+    return result;
 };
 
 const formatTime = (seconds: number) => {

@@ -41,7 +41,7 @@ export function GroupWorkday({
             <Workday.Root>
                 <Workday.Wrapper>
                     <Workday.Header
-                        date={Helper.formatDate(date)}
+                        date={Helper.formatDate(date, true)}
                         visitCount={visits.length}
                         onClose={onClose}
                     />
