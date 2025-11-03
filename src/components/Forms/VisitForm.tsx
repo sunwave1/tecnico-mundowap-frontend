@@ -10,6 +10,7 @@ import Col from "../ui/Flex/Col";
 import Label from "../ui/Label/Label";
 import Row from "../ui/Flex/Row";
 import Input from "../ui/Input/Input";
+import { isNumber } from "util";
 
 export interface VisitFormRef {
     submit: () => void;
@@ -169,6 +170,12 @@ export const VisitForm = forwardRef<VisitFormRef, VisitFormProps>(
                                 placeholder="Quantidade de Formulários"
                                 $rounded="md"
                                 id="qtdForms"
+                                onChange={(e) => {
+                                    e.target.value = e.target.value.replace(
+                                        /[^0-9]/g,
+                                        "",
+                                    );
+                                }}
                             />
                             {errors.forms && (
                                 <Error>{errors.forms.message}</Error>
@@ -187,6 +194,12 @@ export const VisitForm = forwardRef<VisitFormRef, VisitFormProps>(
                                 placeholder="Quantidade de Produtos"
                                 $rounded="md"
                                 id="qtdProducts"
+                                onChange={(e) => {
+                                    e.target.value = e.target.value.replace(
+                                        /[^0-9]/g,
+                                        "",
+                                    );
+                                }}
                             />
                             {errors.products && (
                                 <Error>{errors.products.message}</Error>
@@ -207,6 +220,10 @@ export const VisitForm = forwardRef<VisitFormRef, VisitFormProps>(
                             $rounded="md"
                             id="cep"
                             disabled={isLoading}
+                            onChange={(e) => {
+                                const cep = e.target.value.replace(/\D/g, "");
+                                setValue("cep", cep);
+                            }}
                         />
                         {errors.cep && <Error>{errors.cep.message}</Error>}
                     </Col>
