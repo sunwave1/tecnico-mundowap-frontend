@@ -9,15 +9,18 @@ import {
     RadiusTypes,
     SpacingTypes,
     theme,
+    VariantTypes,
     WeightTypes,
 } from "./theme";
 
-export const variantStyles = (variant: string) => {
+export const variantStyles = (variant: VariantTypes) => {
     switch (variant) {
         case "primary":
             return theme.colors.primary;
         case "secondary":
             return theme.colors.secondary;
+        case "success":
+            return theme.colors.success;
         case "accent":
             return theme.colors.accent;
         default:
@@ -35,6 +38,20 @@ export const colorTextByVariant = (variant: string) => {
             return "black";
         default:
             return "white";
+    }
+};
+
+export const makeColor = (color?: VariantTypes | string) => {
+    switch (color) {
+        case "primary":
+        case "secondary":
+        case "accent":
+        case "success":
+            return variantStyles(color);
+        case "muted":
+            return theme.colors.muted;
+        default:
+            return color;
     }
 };
 
@@ -155,7 +172,7 @@ export const makeSize = (sizes?: LargeTypes) => {
     }
 };
 
-export const makeWeight = (weight?: WeightTypes) => {
+export const makeWeight = (weight?: WeightTypes | string) => {
     switch (weight) {
         case "light":
             return css`
@@ -169,16 +186,22 @@ export const makeWeight = (weight?: WeightTypes) => {
             return css`
                 font-weight: 500;
             `;
+        case "semibold":
+            return css`
+                font-weight: 600;
+            `;
         case "bold":
             return css`
                 font-weight: 700;
             `;
         default:
-            return weight;
+            return css`
+                font-weight: ${weight};
+            `;
     }
 };
 
-export const makeFontSize = (size?: FontSizeTypes) => {
+export const makeFontSize = (size?: FontSizeTypes | string) => {
     switch (size) {
         case "small":
             return css`
@@ -193,6 +216,8 @@ export const makeFontSize = (size?: FontSizeTypes) => {
                 font-size: 20px;
             `;
         default:
-            return size;
+            return css`
+                font-size: ${size};
+            `;
     }
 };
