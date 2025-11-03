@@ -9,6 +9,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { VisitFormData, visitSchema } from "../../lib/zod.schema";
 import { forwardRef, useEffect, useImperativeHandle, useState } from "react";
+import { Visit } from "../../lib/interfaces";
 
 export interface VisitFormRef {
     submit: () => void;
@@ -18,11 +19,13 @@ export interface VisitFormRef {
 }
 
 interface VisitFormProps {
-    onValidSubmit?: (data: VisitFormData) => void;
+    visit?: Visit | null;
+    onCreateSubmit?: (data: VisitFormData) => void;
+    onUpdateSubmit?: (data: VisitFormData, visit: Visit) => void;
 }
 
 export const VisitForm = forwardRef<VisitFormRef, VisitFormProps>(
-    ({ onValidSubmit }, ref) => {
+    ({ onCreateSubmit, onUpdateSubmit, visit }, ref) => {
         const { findLocation, data, clearData, ok, isLoading } = useCep();
         const [forceBlock, setForceBlock] = useState<{
             street: boolean;
@@ -58,7 +61,11 @@ export const VisitForm = forwardRef<VisitFormRef, VisitFormProps>(
         const postalCode = watch("cep");
 
         const onSubmit = (data: VisitFormData) => {
-            onValidSubmit?.(data);
+            if (visit) {
+                onUpdateSubmit?.(data, visit);
+            } else {
+                onCreateSubmit?.(data);
+            }
         };
 
         useImperativeHandle(ref, () => ({
@@ -76,11 +83,21 @@ export const VisitForm = forwardRef<VisitFormRef, VisitFormProps>(
 
         useEffect(() => {
             if (!postalCode || (postalCode && postalCode.length !== 8)) {
+                if (visit) {
+                    reset({
+                        uf: "",
+                        city: "",
+                        sublocality: "",
+                        street: "",
+                        street_number: "",
+                    });
+                }
                 clearData();
                 return;
             }
+            if (visit && visit.address.cep === postalCode) return;
             findLocation(postalCode);
-        }, [postalCode, findLocation, clearData]);
+        }, [postalCode, findLocation, clearData, visit, reset]);
 
         useEffect(() => {
             if (!data) {
@@ -105,6 +122,19 @@ export const VisitForm = forwardRef<VisitFormRef, VisitFormProps>(
             }));
         }, [data, setValue, reset, clearErrors]);
 
+        useEffect(() => {
+            if (!visit) return;
+            setValue("date", visit.date);
+            setValue("forms", visit.forms.toString());
+            setValue("products", visit.products.toString());
+            setValue("cep", visit.address.cep);
+            setValue("uf", visit.address.uf);
+            setValue("city", visit.address.city);
+            setValue("street", visit.address.street);
+            setValue("sublocality", visit.address.sublocality);
+            setValue("street_number", visit.address.street_number);
+        }, [visit, setValue]);
+
         return (
             <Form onSubmit={handleSubmit(onSubmit)}>
                 <Col gap="24px" margin={{ mb: "32px" }}>
@@ -118,6 +148,7 @@ export const VisitForm = forwardRef<VisitFormRef, VisitFormProps>(
                         </Label>
                         <Input
                             {...register("date")}
+                            type="date"
                             placeholder="Data da visita"
                             $rounded="md"
                             id="visita"
