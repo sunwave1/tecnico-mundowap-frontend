@@ -1,5 +1,3 @@
-import { ThemeProvider } from "styled-components";
-import { theme } from "./styles/theme";
 import { GroupWorkday } from "./components/GroupWorkday";
 import { useVisit } from "./store/visit";
 import { useMemo, useState } from "react";
@@ -39,7 +37,7 @@ function App() {
     const sortedDates = Object.keys(groupedVisits).sort();
 
     return (
-        <ThemeProvider theme={theme}>
+        <>
             <HomeLayout>
                 <Col gap={"12px"}>
                     {sortedDates.length > 0 && (
@@ -98,7 +96,7 @@ function App() {
                 }}
                 title={"Editar Visita"}
             />
-        </ThemeProvider>
+        </>
     );
 }
 
